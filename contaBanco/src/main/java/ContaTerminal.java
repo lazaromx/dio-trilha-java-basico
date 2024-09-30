@@ -15,6 +15,8 @@ public class ContaTerminal{
         System.out.println("Por favor, digite seu saldo! ");
         dadosCliente.setSaldo(sc.nextInt());
 
+        sc.close();
+
         dadosCliente.getNomeCliente();
         dadosCliente.getAgencia();
         dadosCliente.getNumeroAgencia();
