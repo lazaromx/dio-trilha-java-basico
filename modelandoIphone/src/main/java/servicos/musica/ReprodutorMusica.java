@@ -1,11 +1,13 @@
 package servicos.musica;
 
 public interface ReprodutorMusica {
-    public void tocar(String musica);
+    void tocar(String musica);
 
-    public void pausar();
+    void pausar();
 
-    public void selecionarMusica(String musica);
+    void selecionarMusica();
 
-//    public void adicionarMusica(String musica);
+    void adicionarMusica();
+
+    void adicionarMusica(String musica);
 }

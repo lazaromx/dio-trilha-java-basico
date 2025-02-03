@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Iphone implements AparelhoTelefonico, NavegadorInternet, ReprodutorMusica {
+    Scanner sc = new Scanner(System.in);
+
+    ArrayList<String> musicasIphone = new ArrayList<>();
     @Override
     public void ligar(String numero) {
         System.out.println("Ligando para " + numero);
@@ -26,13 +29,31 @@ public class Iphone implements AparelhoTelefonico, NavegadorInternet, Reprodutor
     }
 
     @Override
-    public void selecionarMusica(String musica) {
-        System.out.println("Selecionando musica " + musica + " Pelo Apple Music");
+    public void adicionarMusica() {
+        System.out.println("Adicione uma musica no Apple Music:");
+        String musica = sc.nextLine();
+        musicasIphone.add(musica);
+    }
+
+    @Override
+    public void adicionarMusica(String musica){
+        System.out.println("Adicionando musica no Apple Music: " + musica);
+        musicasIphone.add(musica);
+    }
+
+    @Override
+    public void selecionarMusica() {
+//        System.out.println("Selecionando musica " + musica + " no spotify");
+        System.out.println("Escolha uma musica: ");
+        System.out.println(musicasIphone);
+
+        String musicaEscolhida = sc.nextLine();
+        tocar(musicaEscolhida);
     }
 
     @Override
     public void tocar(String musica){
-        System.out.println("Tocando musica pelo Apple Music");
+        System.out.println("Tocando musica " + musica + " pelo Apple Music");
     }
 
     @Override
@@ -63,19 +84,23 @@ public class Iphone implements AparelhoTelefonico, NavegadorInternet, Reprodutor
         ReprodutorMusica spotify = new Spotify();
         Iphone iphone = new Iphone();
 
+        System.out.println("Adicionando musicas separadamente");
 
-//        System.out.println("Adicione uma musica: ");
-//        String musica = sc.nextLine();
-//        musicas.add(musica);
+        iphone.adicionarMusica();
+        iphone.selecionarMusica();
 
-        System.out.println("Digite uma musica: ");
+        spotify.adicionarMusica();
+        spotify.selecionarMusica();
+//        spotify.tocar(musica);
+
+//        iphone.tocar(musica);
+        System.out.println("--------------------");
+
+        System.out.println("Adicionando musicas em ambos os serviços");
         String musica = sc.nextLine();
+        iphone.adicionarMusica(musica);
+        spotify.adicionarMusica(musica);
 
-        spotify.selecionarMusica(musica);
-        spotify.tocar(musica);
-
-        iphone.selecionarMusica(musica);
-        iphone.tocar(musica);
         System.out.println("--------------------");
 
         System.out.println("Disque um numéro: ");
