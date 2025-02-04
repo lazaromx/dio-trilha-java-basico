@@ -48,6 +48,12 @@ public class Iphone implements AparelhoTelefonico, NavegadorInternet, Reprodutor
         System.out.println(musicasIphone);
 
         String musicaEscolhida = sc.nextLine();
+
+        boolean musicaExiste = musicasIphone.contains(musicaEscolhida);
+        if(!musicaExiste){
+            System.out.println("Musica nao encontrada");
+            return;
+        }
         tocar(musicaEscolhida);
     }
 

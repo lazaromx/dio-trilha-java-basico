@@ -19,11 +19,19 @@ public class Spotify implements ReprodutorMusica{
     }
 
     public void selecionarMusica() {
+
 //        System.out.println("Selecionando musica " + musica + " no spotify");
         System.out.println("Escolha uma musica: ");
         System.out.println(musicasSpotify);
 
         String musicaEscolhida = sc.nextLine();
+
+        boolean musicaExiste = musicasSpotify.contains(musicaEscolhida);
+
+        if(!musicaExiste){
+            System.out.println("Musica nao encontrada");
+            return;
+        }
         tocar(musicaEscolhida);
     }
     public void tocar(String musica){
